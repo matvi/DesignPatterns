@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CommanPattern
 {
-    public class Entity : IEntity
+    public class Entityy : IEntity
     {
         public void SendMessage(string message)
         {

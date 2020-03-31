@@ -8,6 +8,10 @@ namespace CommanPattern
     {
         private List<Command> _commands = new List<Command>();
 
+        public CommandProcessor()
+        {
+
+        }
         public CommandProcessor(Command command)
         {
             command.Execute();
