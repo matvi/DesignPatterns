@@ -7,7 +7,7 @@ namespace CommandAPI.Data
 {
    public  interface ICommandDispatcher
     {
-        Task DispatchAsync<T>(T command) where T : ICommand;
+        Task<TResponse> DispatchAsync<T,TResponse>(T command) where T : ICommand where TResponse:IResponse;
     }
 
 }

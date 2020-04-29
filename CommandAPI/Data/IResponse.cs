@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace CommandAPI.Data
 {
-    public interface ICommandHandler<in T> where T : ICommand
+    public interface IResponse
     {
-        Task<IResponse> HandleAsync(T command);
+        int Code { get; set; }
     }
 }

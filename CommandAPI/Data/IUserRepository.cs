@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace CommandAPI.Data
 {
+    using CommandAPI.Contracts;
     using CommandAPI.Model;
 
     public interface IUserRepository
     {
-        void AddUser(User user);
+        Task<AddUserResponse> AddUser(User user);
     }
 }

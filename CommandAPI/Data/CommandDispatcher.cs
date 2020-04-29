@@ -16,8 +16,10 @@ namespace CommandAPI.Data
             _serviceProvider = serviceProvider;
         }
         
-        public async Task DispatchAsync<T>(T command)
+
+        public async Task<TResponse> DispatchAsync<T, TResponse>(T command)
             where T : ICommand
+            where TResponse : IResponse
         {
             if (command == null)
             {
@@ -26,7 +28,8 @@ namespace CommandAPI.Data
             }
 
             var handler = _serviceProvider.GetService(typeof(ICommandHandler<T>)) as ICommandHandler<T>;
-            await handler.HandleAsync(command);
+            var response = await handler.HandleAsync(command);
+            return (TResponse)response;
         }
     }
 }

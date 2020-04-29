@@ -35,9 +35,9 @@ namespace CommandAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateUser user)
+        public async Task<IActionResult> Post([FromBody] CreateUserCommand user)
         {
-            await _commandDispatcher.DispatchAsync(user);
+            //await _commandDispatcher.DispatchAsync(user);
             return Ok();
         }
 

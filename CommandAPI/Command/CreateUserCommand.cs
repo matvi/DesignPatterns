@@ -7,7 +7,7 @@ namespace CommandAPI.Command
 {
     using CommandAPI.Data;
 
-    public class CreateUser : ICommand
+    public class CreateUserCommand : ICommand
     {
         public int UserId { get; set; }
         public string Email { get; set; }

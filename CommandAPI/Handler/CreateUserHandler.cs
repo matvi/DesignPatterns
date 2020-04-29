@@ -9,7 +9,7 @@ namespace CommandAPI.Handler
     using CommandAPI.Data;
     using CommandAPI.Model;
 
-    public class CreateUserHandler : ICommandHandler<CreateUser>
+    public class CreateUserHandler : ICommandHandler<CreateUserCommand>
     {
         private readonly IUserRepository _userRepository;
 
@@ -22,10 +22,15 @@ namespace CommandAPI.Handler
         {
             
         }
-        public async Task HandleAsync(CreateUser command)
+
+        public async Task<IResponse> HandleAsync(CreateUserCommand command)
         {
             Console.WriteLine("Creating User in database");
-            _userRepository.AddUser(new User());
+            var response = await _userRepository.AddUser(new User());
+            return response;
         }
+ 
+
+
     }
 }

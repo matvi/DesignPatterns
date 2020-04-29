@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CommandAPI.Controllers
 {
     using CommandAPI.Command;
+    using CommandAPI.Contracts;
     using CommandAPI.Data;
 
     [Route("api/[controller]")]
@@ -23,9 +24,9 @@ namespace CommandAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateUser user)
+        public async Task<IActionResult> Post([FromBody] CreateUserCommand createUserCommand)
         {
-            await _commandDispatcher.DispatchAsync(user);
+            var response =  await _commandDispatcher.DispatchAsync<CreateUserCommand,AddUserResponse>(createUserCommand);
             return Ok();
         }
     }
